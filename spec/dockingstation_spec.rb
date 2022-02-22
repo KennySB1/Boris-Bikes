@@ -1,3 +1,4 @@
+require 'dockingstation'
 describe DockingStation do
   it 'stores bikes' do
     
