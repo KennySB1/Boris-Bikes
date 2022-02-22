@@ -11,8 +11,13 @@ class DockingStation
   end
 
   def release_bike
-    Bike.new
+    if @bikes.empty?
+      raise Exception.new "There are no bikes left"
+    else
+      Bike.new
+    end
   end
+
   def show_bikes
     bikes
   end

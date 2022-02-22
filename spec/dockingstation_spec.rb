@@ -13,5 +13,7 @@ describe DockingStation do
     result = subject.show_bikes
     expect(result).to be_an_instance_of(Array)
   end
+  it 'passes error if docking station has no bikes' do
+    expect { subject.release_bike }.to raise_error
   end
-
+  end
