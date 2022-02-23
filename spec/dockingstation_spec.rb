@@ -37,5 +37,8 @@ describe DockingStation do
     expect(dockingstation.dock_bike(bike, false)).to eq([[bike, false]])
   end
   it 'prevents docking stations releasing broken bikes' do
+    bike = Bike.new
+    dockingstation.dock_bike(bike, false)
+    expect {dockingstation.release_bike}.to raise_error
   end
 end

@@ -24,6 +24,8 @@ class DockingStation
       @bikes.each do |bike|
       if bike[1] == true
         return @bikes.pop
+      elsif bike[1] == false
+        raise Exception.new "This bike is broken"
       end
     end
     end
