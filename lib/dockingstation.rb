@@ -1,13 +1,17 @@
 require_relative 'bike'
 class DockingStation
-  attr_reader :bikes
+  attr_accessor :bikes
 
   def initialize
     @bikes = []
   end
 
   def dock_bike(bike)
-    @bikes << bike
+    if !bikes.empty?
+      raise Exception.new "There's already a bike here"
+    else
+     @bikes << bike
+    end
   end
 
   def release_bike
