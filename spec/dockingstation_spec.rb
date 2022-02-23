@@ -18,7 +18,7 @@ describe DockingStation do
   end
   it 'passes error if adding bike to full docking station' do
     dockingstation = DockingStation.new
-    20.times { dockingstation.dock_bike Bike.new }
+    dockingstation.DEFAULT_CAPACITY.times { dockingstation.dock_bike Bike.new }
     expect {dockingstation.dock_bike(bike)}.to raise_error
   end
 end
