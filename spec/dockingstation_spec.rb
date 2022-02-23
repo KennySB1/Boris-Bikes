@@ -1,9 +1,12 @@
 require 'dockingstation'
 describe DockingStation do
-  let(:bike) {Bike.new}
+  let(:bike) {double(:bike)}
   let(:dockingstation) {DockingStation.new}
   it 'releases bikes' do
     expect(subject).to respond_to(:release_bike)
+  end
+  it 'responds to working' do
+    expect(bike).to respond_to(:working?)
   end
   it 'stores a bike in the docking station' do
     subject.dock_bike(bike)
@@ -37,7 +40,7 @@ describe DockingStation do
     expect(dockingstation.dock_bike(bike, false)).to eq([[bike, false]])
   end
   it 'prevents docking stations releasing broken bikes' do
-    bike = Bike.new
+    bike = double(:bike)
     dockingstation.dock_bike(bike, false)
     expect {dockingstation.release_bike}.to raise_error
   end
