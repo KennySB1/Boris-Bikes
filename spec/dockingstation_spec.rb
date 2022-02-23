@@ -17,8 +17,8 @@ describe DockingStation do
     expect { subject.release_bike }.to raise_error
   end
   it 'passes error if adding bike to full docking station' do
-  dockingstation = DockingStation.new
-  dockingstation.bikes.push(bike)
-  expect {dockingstation.dock_bike(bike)}.to raise_error
+    dockingstation = DockingStation.new
+    20.times { dockingstation.dock_bike Bike.new }
+    expect {dockingstation.dock_bike(bike)}.to raise_error
   end
 end

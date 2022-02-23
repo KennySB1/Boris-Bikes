@@ -7,7 +7,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
-    if !bikes.empty?
+    if bikes.size == 20
       raise Exception.new "There's already a bike here"
     else
      @bikes << bike
