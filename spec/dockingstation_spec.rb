@@ -8,8 +8,15 @@ describe DockingStation do
   it 'stores a bike in the docking station' do
     subject.dock_bike(bike)
     result = subject.bikes
-    expect(result).to eq([bike])
+    expect(result).to eq([[bike, true]])
   end
+
+  it 'stores a broken bike in the docking station' do
+    subject.dock_bike(bike, false)
+    result = subject.bikes()
+    expect(result).to eq([[bike, false]])
+  end
+
   it 'returns the array of docked bikes' do
     result = subject.show_bikes
     expect(result).to be_an_instance_of(Array)
@@ -27,7 +34,7 @@ describe DockingStation do
     expect(dockingstation.DEFAULT_CAPACITY).to eq(25)
   end
   it 'allows users to return broken bikes' do
-    expect(dockingstation.dock_bike(bike, false)).to_eq([bike, false])
+    expect(dockingstation.dock_bike(bike, false)).to eq([[bike, false]])
   end
   it 'prevents docking stations releasing broken bikes' do
   end

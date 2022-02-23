@@ -26,6 +26,7 @@ class DockingStation
         return @bikes.pop
       end
     end
+    end
   end
 
   def show_bikes
