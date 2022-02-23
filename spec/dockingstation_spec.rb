@@ -21,4 +21,9 @@ describe DockingStation do
     dockingstation.DEFAULT_CAPACITY.times { dockingstation.dock_bike Bike.new }
     expect {dockingstation.dock_bike(bike)}.to raise_error
   end
+    it 'allows the user to set a capacity on the docking station when initializing' do
+      dockingstation = DockingStation.new(25)
+      expect(dockingstation.DEFAULT_CAPACITY).to eq(25)
+    end
 end
+
