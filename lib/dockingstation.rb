@@ -8,11 +8,12 @@ class DockingStation
     @DEFAULT_CAPACITY = capacity
   end
 
-  def dock_bike(bike)
+  def dock_bike(bike, working = true)
+
     if full?
       raise Exception.new "There's already a bike here"
     else
-     @bikes << bike
+     @bikes << [bike, working]
     end
   end
 
@@ -20,7 +21,10 @@ class DockingStation
     if empty?
       raise Exception.new "There are no bikes left"
     else
-      Bike.new
+      @bikes.each do |bike|
+      if bike[1] == true
+        return @bikes.pop
+      end
     end
   end
 
@@ -35,6 +39,6 @@ class DockingStation
   end
 
   def empty?
-    bikes.empty? ? true : false
+    @bikes.empty? ? true : false
   end
 end

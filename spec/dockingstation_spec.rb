@@ -1,6 +1,7 @@
 require 'dockingstation'
 describe DockingStation do
   let(:bike) {Bike.new}
+  let(:dockingstation) {DockingStation.new}
   it 'releases bikes' do
     expect(subject).to respond_to(:release_bike)
   end
@@ -21,9 +22,13 @@ describe DockingStation do
     dockingstation.DEFAULT_CAPACITY.times { dockingstation.dock_bike Bike.new }
     expect {dockingstation.dock_bike(bike)}.to raise_error
   end
-    it 'allows the user to set a capacity on the docking station when initializing' do
-      dockingstation = DockingStation.new(25)
-      expect(dockingstation.DEFAULT_CAPACITY).to eq(25)
-    end
+  it 'allows the user to set a capacity on the docking station when initializing' do
+    dockingstation = DockingStation.new(25)
+    expect(dockingstation.DEFAULT_CAPACITY).to eq(25)
+  end
+  it 'allows users to return broken bikes' do
+    expect(dockingstation.dock_bike(bike, false)).to_eq([bike, false])
+  end
+  it 'prevents docking stations releasing broken bikes' do
+  end
 end
-
